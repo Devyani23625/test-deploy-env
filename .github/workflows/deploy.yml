@@ -27,7 +27,8 @@ jobs:
 
       - name: Save deployment log
         run: |
-          echo "{ \"rollback\": \"${{ inputs.rollback}\" }" > deploy-log.json
+          echo "{ \"rollback\": \"${{ inputs.rollback }}\" }" > deploy-log.json
+
 
       - name: Upload deployment log
         uses: actions/upload-artifact@v4
