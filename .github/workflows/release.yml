@@ -12,7 +12,7 @@ jobs:
       - run: |
           echo "Simulating build..."
           # Uncomment this to simulate failure:
-          # exit 1
+           exit 1
 
   trigger-deploy:
     needs: release
