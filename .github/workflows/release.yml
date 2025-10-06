@@ -1,0 +1,22 @@
+name: Release Pipeline
+
+on:
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Simulate Release
+        run: |
+          echo "🏗️ Simulating release..."
+          # Uncomment to simulate a failure
+          # exit 1
+
+  trigger-deploy:
+    needs: release
+    if: always()  # Run even if release fails
+    uses: ./.github/workflows/deploy.yml
+    with:
+      rollback: ${{ needs.release.result == 'failure' }}
